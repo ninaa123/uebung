@@ -41,8 +41,9 @@ int cmp(int a, int b)
 int *sort(int *p, int elements)
 {
     int k;
-    int m;
     int *res;
+    int tmp;
+    int m;
     
     res=(int *) malloc(elements*sizeof(int));
     
@@ -57,14 +58,10 @@ int *sort(int *p, int elements)
     for(k=1;k<elements;++k)
     {
         res[k]=rand();
-        
-        for(m=0;m<k;++m)
+        while(res[k]<res[k-1])
         {
-            if(cmp(res[k],res[k-m])==1)
-            {
-                swap(&res[k],&res[k-m]);
-                k=k-m;
-            }
+            swap(&res[k],&res[k-1]);
+            k=k-1;
         }
     }
     
@@ -77,7 +74,7 @@ int main(int argc, char** argv) {
     int *result;
     int i;
     
-    int elements=5;
+    int elements=20;
     
     p=(int *) malloc(elements*sizeof(int));
     result=(int *) malloc(elements*sizeof(int));

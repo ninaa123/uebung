@@ -68,8 +68,34 @@ int *sort(int *p, int elements)
     return res;
 }
 
+int findElement(int *a, int links, int rechts, int element)
+{
+    int mid;
+    
+    do
+    {
+        mid=(rechts+links)/2;
+        printf("%d %d %d\n", links, mid, rechts);
+        if(a[mid]==element)
+            return mid;
+        else if(a[mid]>element)
+        {
+            rechts=mid-1;
+        }
+        else if(a[mid]<element)
+        {
+            links=mid+1;
+        }
+    }    
+    while(links<=rechts);
+    return -1;
+}
+
 int main(int argc, char** argv) {
     
+    //sort mit vertauschen
+    
+/*
     int *p;
     int *result;
     int i;
@@ -91,20 +117,6 @@ int main(int argc, char** argv) {
         exit(EXIT_FAILURE);                        
     }
     
-/*
-    fill(p, elements);
-    
-    FILE *f;
-    f=fopen("sort.txt","w");
-  
-    for(i=0;i<elements;++i)
-    {
-        fprintf(f,"%d %d\n",i, p[i]);
-    }
-    
-    fclose(f);
-*/
-    
     result = sort(p, elements);
     for(int n=0;n<elements;++n)
     {
@@ -113,6 +125,16 @@ int main(int argc, char** argv) {
     
     free(p);
     free(result);
+*/
+    
+    int *a;
+    
+    for(int i=0;i<100;++i)
+    {
+        a[i]=i;
+    }
+    
+    //printf("%d",findElement(a, 0, 99, 51));
 
     return (EXIT_SUCCESS);
 }

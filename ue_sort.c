@@ -60,7 +60,7 @@ int *sort(int *p, int elements)
         
         for(m=0;m<k;++m)
         {
-            if(cmp(res[k],res[k-m])==0)
+            if(cmp(res[k],res[k-m])==1)
             {
                 swap(&res[k],&res[k-m]);
                 k=k-m;
@@ -77,7 +77,7 @@ int main(int argc, char** argv) {
     int *result;
     int i;
     
-    int elements=10;
+    int elements=5;
     
     p=(int *) malloc(elements*sizeof(int));
     result=(int *) malloc(elements*sizeof(int));

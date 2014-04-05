@@ -22,7 +22,6 @@ void swap(int *a, int *b)
 
 int *sort(int *p, int elements)
 {
-        
     for(int k=1;k<elements;++k)
     {
         while(p[k]<p[k-1])
@@ -31,7 +30,6 @@ int *sort(int *p, int elements)
             k=k-1;
         }
     }
-    
     return p;
 }
 
@@ -64,23 +62,14 @@ int main(int argc, char** argv) {
     //sort mit vertauschen
     
     int *p;
-    int *result;
-    int i;
     
     int elements=20;
     
     p=(int *) malloc(elements*sizeof(int));
-    result=(int *) malloc(elements*sizeof(int));
     
     if (p==NULL) 
     {
         perror("Nicht genug Speicher vorhanden. p"); 
-        exit(EXIT_FAILURE);                        
-    }
-    
-    if (result==NULL) 
-    {
-        perror("Nicht genug Speicher vorhanden. result"); 
         exit(EXIT_FAILURE);                        
     }
     
@@ -89,14 +78,12 @@ int main(int argc, char** argv) {
         p[i]=rand();
     }
     
-    result=sort(p, elements);
     for(int n=0;n<elements;++n)
     {
-        printf("%d\n",result[n]);
+        printf("%d\n",sort(p, elements)[n]);
     }
     
     free(p);
-    free(result);
     
     //findElement
     

@@ -12,17 +12,6 @@
  * 
  */
 
-int *fill(int *a, int elements)
-{
-    int j;
-    for(j=0;j<elements;++j)
-    {
-        a[j]=rand();
-    }
-    
-    return a;
-}
-
 void swap(int *a, int *b)
 {
     int tmp;
@@ -31,41 +20,19 @@ void swap(int *a, int *b)
     *b=tmp;
 }
 
-int cmp(int a, int b)
-{
-    if(a>b)
-        return 0;
-    else return 1;
-}
-
 int *sort(int *p, int elements)
 {
-    int k;
-    int *res;
-    int tmp;
-    int m;
-    
-    res=(int *) malloc(elements*sizeof(int));
-    
-    if (res==NULL) 
+        
+    for(int k=1;k<elements;++k)
     {
-        perror("Nicht genug Speicher vorhanden."); 
-        exit(EXIT_FAILURE);                        
-    }
-    
-    res[0]=rand();
-    
-    for(k=1;k<elements;++k)
-    {
-        res[k]=rand();
-        while(res[k]<res[k-1])
+        while(p[k]<p[k-1])
         {
-            swap(&res[k],&res[k-1]);
+            swap(&p[k],&p[k-1]);
             k=k-1;
         }
     }
     
-    return res;
+    return p;
 }
 
 int findElement(int *a, int links, int rechts, int element)
@@ -75,7 +42,6 @@ int findElement(int *a, int links, int rechts, int element)
     do
     {
         mid=(rechts+links)/2;
-        printf("%d %d %d\n", links, mid, rechts);
         if(a[mid]==element)
             return mid;
         else if(a[mid]>element)
@@ -91,11 +57,12 @@ int findElement(int *a, int links, int rechts, int element)
     return -1;
 }
 
+//int *sortMove()
+
 int main(int argc, char** argv) {
     
     //sort mit vertauschen
     
-/*
     int *p;
     int *result;
     int i;
@@ -117,7 +84,12 @@ int main(int argc, char** argv) {
         exit(EXIT_FAILURE);                        
     }
     
-    result = sort(p, elements);
+    for(int i=0;i<elements;++i)
+    {
+        p[i]=rand();
+    }
+    
+    result=sort(p, elements);
     for(int n=0;n<elements;++n)
     {
         printf("%d\n",result[n]);
@@ -125,16 +97,28 @@ int main(int argc, char** argv) {
     
     free(p);
     free(result);
-*/
     
-    int *a;
+    //findElement
+    
+/*
+    int n=100;
+    int *a=(int *) malloc(100*sizeof(int));
+    
+    if (a==NULL) 
+    {
+        perror("Nicht genug Speicher vorhanden. a"); 
+        exit(EXIT_FAILURE);                        
+    }
     
     for(int i=0;i<100;++i)
     {
         a[i]=i;
     }
     
-    //printf("%d",findElement(a, 0, 99, 51));
+    printf("%d",findElement(a, 0, 99, 51));
+    
+    free(a);
+*/
 
     return (EXIT_SUCCESS);
 }

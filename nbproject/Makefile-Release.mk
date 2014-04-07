@@ -64,8 +64,8 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ue_sort: ${OBJECTFILES}
 
 ${OBJECTDIR}/ue_sort.o: ue_sort.c 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/ue_sort.o ue_sort.c
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ue_sort.o ue_sort.c
 
 # Subprojects
 .build-subprojects:
